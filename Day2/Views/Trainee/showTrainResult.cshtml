@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "showTrainResult";
+}
+
+<h1>showTrainResult</h1>
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item" style="color:@item.color">@item.courseName  &ensp; @item.Degree</li>
+    }
+</ul>

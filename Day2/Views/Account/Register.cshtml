@@ -1,0 +1,47 @@
+﻿@model Day2.ViewModel.Register_NewAccount
+
+@{
+    Layout = "_AccountFormLayout";
+    ViewData["Title"] = "Register";
+}
+
+<div class="card-header bg-light text-center">
+    <h1 class="m-0">Sign Up Now</h1>
+</div>
+<div class="card-body rounded-bottom bg-primary p-5">
+    <form asp-action="Register">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group  form-outline mb-4">
+            <label asp-for="UserName" class="control-label text-light font-weight-bold"></label>
+            <input asp-for="UserName" class="form-control border-0 p-4" placeholder="Username" required="required" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group form-outline mb-4">
+            <label asp-for="Password" class="control-label font-weight-bold text-light"></label>
+            <input asp-for="Password" class="form-control border-0 p-4" placeholder="password" required="required" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+       
+        <div class="form-group form-outline mb-4">
+            <label asp-for="ConfirmPassword" class="control-label font-weight-bold text-light"></label>
+            <input asp-for="ConfirmPassword" class="form-control border-0 p-4" placeholder="confirm password" required="required" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div>
+            <button class="btn btn-dark btn-block border-0 py-3" type="submit">Sign Up Now</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <p class="mb-0 text-light">
+            Do have an account? <a asp-action="login" class="text-white-50 fw-bold">Sign In</a>
+        </p>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

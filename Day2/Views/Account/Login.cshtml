@@ -1,0 +1,29 @@
+﻿@model Account
+@{
+    Layout = "_AccountFormLayout";
+    ViewData["Title"] = "Login";
+}
+<div class="card-header bg-light text-center">
+    <h1 class="m-0">Login</h1>
+</div>
+<div class="card-body rounded-bottom bg-primary p-5">
+    <form method="post">
+        <div class="form-group form-outline mb-4">
+            <label asp-for="UserName" class="control-label text-light font-weight-bold"></label>
+            <input asp-for="UserName" class="form-control border-0 p-4" placeholder="Username" required="required" />
+        </div>
+        <div class="form-group form-outline mb-4">
+            <label asp-for="Password" class="control-label text-light font-weight-bold"></label>
+            <input asp-for="Password" class="form-control border-0 p-4" placeholder="password" required="required" />
+        </div>
+
+        <div>
+            <button class="btn btn-dark btn-block border-0 py-3" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <p class="mb-0 text-light">
+            Don't have an account? <a asp-action="Register" class="text-white-50 fw-bold">Sign Up</a>
+        </p>
+    </div>
+</div>

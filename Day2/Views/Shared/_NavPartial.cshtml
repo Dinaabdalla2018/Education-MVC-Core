@@ -1,0 +1,37 @@
+﻿<!-- Navbar Start -->
+<div class="container-fluid">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav py-0">
+                        <a class="nav-item nav-link font-weight-bold" asp-area="" asp-controller="home" asp-action="Index"><span class="text-primary">My &nbsp;</span>Education</a>
+                        <a class="nav-item nav-link " asp-area="" asp-controller="home" asp-action="Index">Home</a>
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <a class="nav-item nav-link " asp-area="" asp-controller="course" asp-action="Index">Courses</a>
+                        }
+                        @if (User.IsInRole("Admin") == true)
+                        {
+                        <a class="nav-item nav-link " asp-area="" asp-controller="instructor" asp-action="Index">Teachers</a>
+                         }
+                        <div class="nav-item dropdown">
+                           
+                        </div>
+                    </div>
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" asp-controller="Account" asp-action="login">Login</a>
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" asp-controller="Account" asp-action="register">Register</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" asp-controller="Account" asp-action="logout">Logout</a>
+                        <a class="pl-2 px-4 mr-0 d-none d-lg-block" asp-controller="Account">Welcome @User.Identity.Name</a>
+                    }
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Navbar End -->

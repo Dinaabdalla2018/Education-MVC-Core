@@ -1,0 +1,30 @@
+﻿@model List<Course>
+@{
+    Layout = "_MYLayout";
+    ViewData["Title"] = "Index";
+}
+@foreach(Course item in Model)
+{
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="rounded overflow-hidden mb-2">
+            <img class="img-fluid" src="img/course-5.jpg" alt="">
+            <div class="bg-secondary p-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="m-0"><i class="fas fa-pen  mr-2"></i>@item.minDegree minDegree</small>
+                    <small class="m-0"><i class="fas fa-pen  mr-2"></i>@item.degree  Degree</small>
+                </div>
+                <a class="h5" href="@Url.Action("Edit","course",new{id=item.Id})">@item.Name</a>
+                <div class="border-top mt-4 pt-4">
+                    <div class="d-flex justify-content-between">  
+                        <h6 class="m-0"><i class="fa fa-users text-primary mr-2"></i>@item.department.Name </h6>
+                        <h5 class="m-0 text-success">FREE</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<br /><br />
+@section newsection{
+    <a href="/course/New" class=" btn btn-link d-flex justify-content-center font-weight-bolder"><i class="fas fa-plus-circle mr-2"></i>Add New Course</a>
+}

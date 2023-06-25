@@ -1,0 +1,52 @@
+﻿@model List<Instructor>
+@{
+    Layout = "_InstructorLayout";
+    ViewData["Title"] = "Index";
+}
+
+@section searchsection{
+    <a href="/instructor/index" class=" btn btn-link d-flex justify-content-center font-weight-bolder">ALL</a>
+<form action="/instructor/Search" method="post">
+    <div class="d-flex justify-content-center p-4 m-2">
+        <label class="form-label px-4 m-2 text-primary" value="@ViewBag?.search">Search</label>
+        <input type="text" class="form-control w-50 px-2" name="search" />
+        <button type="submit" class="btn">
+            <a href="" class="pe-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+        </a>
+        </button>
+
+    </div>
+</form>
+   
+
+}
+
+    @foreach (Instructor item in Model)
+    {
+        <div class="col-md-6 col-lg-3 text-center team mb-4">
+            <div class="team-item rounded overflow-hidden mb-2">
+            <div class="team-img position-relative">
+                    <img class="img-fluid " src="/Images/@item.Image" alt="">
+              
+                    <div class="team-social">
+                        <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-square mx-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-square mx-1" href="@Url.Action("details","Instructor",new{id=item.Id})"><i class="fas fa-info"></i></a>
+                        <a class="btn btn-outline-light btn-square mx-1" href="@Url.Action("Edit","Instructor",new{id=item.Id})"><i class="fas fa-user-edit"></i></a>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4">
+                    <h5>@item.Name</h5>
+                    <p class="m-0">@item.address</p>
+                </div>
+            </div>
+        </div>
+        
+    }
+@section newsection{
+    <a href="/instructor/New" class=" btn btn-link d-flex justify-content-center font-weight-bolder"><i class="fas fa-plus-circle mr-2"></i>Add New Instructor</a>
+}

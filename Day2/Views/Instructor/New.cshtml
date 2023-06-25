@@ -1,0 +1,71 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "New";
+    Layout = "_FormLayout";
+
+    SelectList depItems = new SelectList(ViewBag.DList, "Id", "Name");
+}
+
+<h1 class="text-center "><i class="fas fa-chalkboard-teacher"></i>Add New Instructor</h1>
+
+<form method="post" class="form-group p-2" action="~/instructor/Save" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label>Instructor Name</label>
+        <input type="text" name="Name" id="Name" value="@Model?.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Address </label>
+        <input type="text" name="address" id="address" value="@Model?.address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Salary </label>
+        <input type="number" name="salary" id="salary" value="@Model?.salary" class="form-control" />
+    </div>
+    <div class="control-group">
+        <label asp-for="departmentId">Department</label>
+        @* <input class="form-control" asp-for="DeptID" />*@
+        <select class="form-control" id="deptID" asp-for="departmentId" asp-items="depItems" onchange=" changeDeptID()">
+            <option value="0">--Select Department--</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Course Name</label>
+        <select name="courseId" id="courseId" class="form-control">
+        </select>
+    </div>
+    <div class="form-group ">
+        <label for="imageUpload">Upload Image:</label><br />
+        <input type="file" class="form-control " name="Image">
+    </div>
+    <iv class="form-group d-flex justify-content-center">
+        <input type="submit" value="Create" class="btn btn-primary mt-4 " />
+
+    </iv>
+    </form>
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script>
+        function changeDeptID(){
+            var deptID = document.getElementById("deptID").value;
+            console.log(deptID)
+            $.ajax({
+                url: "/instructor/GetCourseByDept?deptId=" + deptID,
+                success: function (result) {
+                    console.log(result);
+                    document.getElementById("courseId").innerHTML="";
+                    for(let i of result){
+                        document.getElementById("courseId").innerHTML+=
+                            "<option value=" + i.course_id + ">" + i.course_name + "</option>"
+                    }
+                }
+            })
+               }
+        
+        </script>
+      
+    }
+
+
+
