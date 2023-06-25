@@ -60,7 +60,7 @@ The application uses the following dependencies:
 - Microsoft.EntityFrameworkCore.Tools
 
 #### Demo
-
+![Demo](https://github.com/Dinaabdalla2018/Education-MVC-Core/blob/main/Demo.gif)
 ### License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
